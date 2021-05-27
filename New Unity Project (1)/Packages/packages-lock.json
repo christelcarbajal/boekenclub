@@ -130,7 +130,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "3.0.4",
+      "version": "3.0.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -139,7 +139,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
+<<<<<<< HEAD
       "version": "1.5.4",
+=======
+      "version": "1.4.8",
+>>>>>>> 83053f385a232eb5f2e2dfbd3178af7f9436aaed
       "depth": 0,
       "source": "registry",
       "dependencies": {
