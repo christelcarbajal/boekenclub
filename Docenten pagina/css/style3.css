@@ -1,0 +1,19 @@
+section{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.kind{
+    margin : 50px;
+
+    padding : 20px;
+    border: 2px solid black;
+    transition: all 0.4s ease-out;
+    cursor: pointer;
+}
+
+.kind:hover{
+    background-color: lightcyan;
+    transition: all 0.4s ease-out;
+}

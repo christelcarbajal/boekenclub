@@ -10,7 +10,7 @@ require_once "DBarray.php";
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style3.css">
 </head>
 <body>
     <h1>Kinderen</h1>
