@@ -1,4 +1,31 @@
+<?php
+/** @var $db */
+require_once "DB.php";
 
+if (isset($_POST['submit'])) {
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $password2 = password_hash($_POST['password2'], PASSWORD_DEFAULT);
+    $naam = $_POST['name'];
+    $school = $_POST['school'];
+    $mail = $_POST['email'];
+
+    if ($_POST['password'] == $_POST['password2']){
+        $query = "INSERT INTO docenten (name, mail, school, password)
+                  VALUES ('$naam', '$mail', '$school', '$password')";
+        $result = mysqli_query($db, $query) or die('Error: ' . $query);
+
+        if ($result) {
+            header('Location: index.php');
+            exit;
+        } else {
+            $error['db'] = 'Something went wrong in your database query: ' . mysqli_error($db);
+        }
+    }else{
+        $errors['herhalen'] = 'Wachtwoord herhalen ging fout';
+    }
+
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +35,7 @@
 </head>
 <body>
 <section>
-    <h1>Nieuwe Admin toevoegen</h1>
+    <h1>Nieuwe School toevoegen</h1>
 
     <?php if (isset($error)) { ?>
         <p><?= $error['db']; ?></p>
@@ -24,8 +51,8 @@
             <input class = "text" id="email" type="email" name="email"/>
         </div>
         <div>
-            <label for="last_name">School:</label><br>
-            <input class = "text" id="last_name" type="text" name="last_name"/>
+            <label for="school">School:</label><br>
+            <input class = "text" id="school" type="text" name="school"/>
         </div>
         <div>
             <label for="password">Wachtwoord:</label><br>

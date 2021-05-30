@@ -1,3 +1,42 @@
+<?php
+
+session_start();
+
+/** @var $db */
+require_once "DB.php";
+$login = false;
+
+if (isset($_POST['submit'])) {
+    $email = mysqli_escape_string($db, $_POST['email']);
+    $password = $_POST['password'];
+
+    //Get record from DB based on first name
+    $query = "SELECT * FROM docenten WHERE mail='$email'";
+    $result = mysqli_query($db, $query);
+    if (mysqli_num_rows($result) == 1) {
+        $user = mysqli_fetch_assoc($result);
+        if (password_verify($password, $user['password'])) {
+            $login = true;
+        } else {
+            $error = "Onjuiste inloggegevens";
+        }
+    } else {
+        $error = "Onjuiste inloggegevens";
+    }
+    if (!isset($error)) {
+        $_SESSION['login'] = $email;
+    }
+}
+
+
+if (isset($_SESSION['login'])) {
+    header("Location: index.php ");
+    exit;
+}
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>

@@ -6,7 +6,7 @@ body{
 
 section{
     background-color: #5887FF;
-    width: 1200px;
+    max-width: 1200px;
     display: flex;
     text-align: center;
     justify-content: center;
@@ -39,4 +39,9 @@ section{
 a{
     text-decoration: none;
     color: black;
+}
+
+div{
+    text-decoration: underline;
+    margin: 5px;
 }
