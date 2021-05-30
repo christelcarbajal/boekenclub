@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>Aanmelden</title>
 </head>
 <body>
@@ -16,28 +16,28 @@
 
     <form method="post" action="<?= $_SERVER['REQUEST_URI']; ?>">
         <div>
-            <label for="name">Naam:</label>
+            <label for="name">Naam:</label><br>
             <input class = "text" id="name" type="text" name="name"/>
         </div>
         <div>
-            <label for="email">E-mail:</label>
+            <label for="email">E-mail:</label><br>
             <input class = "text" id="email" type="email" name="email"/>
         </div>
         <div>
-            <label for="last_name">School:</label>
+            <label for="last_name">School:</label><br>
             <input class = "text" id="last_name" type="text" name="last_name"/>
         </div>
         <div>
-            <label for="password">Wachtwoord:</label>
+            <label for="password">Wachtwoord:</label><br>
             <input class = "text" id="password" type="password" name="password"/>
         </div>
         <div>
-            <label for="password2">Wachtwoord herhalen:</label>
+            <label for="password2">Wachtwoord herhalen:</label><br>
             <input class = "text" id="password2" type="password" name="password2"/>
             <span class="errors"><?= isset($errors['herhalen']) ? $errors['herhalen'] : '' ?></span>
         </div>
         <div>
-            <input type="submit" name="submit" value="Aanmelden"/>
+            <input id = "log" type="submit" name="submit" value="Aanmelden"/>
         </div>
     </form>
 </section>

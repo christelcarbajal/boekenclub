@@ -27,7 +27,7 @@ if ($totaalGoed > $totaalFout) {
 <head>
     <meta charset="UTF-8">
     <title><?= $kind ?></title>
-    <link rel="stylesheet" type="text/css" href="style2.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style2.css"/>
 </head>
 <body>
 

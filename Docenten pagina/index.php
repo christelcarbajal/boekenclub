@@ -16,7 +16,7 @@ require_once "DBarray.php";
     <h1>Kinderen</h1>
     <section>
         <?php foreach ($kinderen as $kind) { ?>
-            <p class = "kind"><?= $kind['name'] ?></p>
+            <a href="overzicht.php?id=<?= $kind['id'] ?>"><p class = "kind"><?= $kind['name'] ?></p></a>
         <?php } ?>
     </section>
 </body>

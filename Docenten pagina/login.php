@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
 </head>
 <body>
 <section>
@@ -29,7 +29,7 @@
     </form>
 
     <div id = "link">
-        <a href="../CLE4-boekenclub/Docenten%20pagina/aanmelden.php">Of maak een account aan!</a>
+        <a href="../Docenten%20pagina/aanmelden.php">Of maak een account aan!</a>
     </div>
 </section>
 
