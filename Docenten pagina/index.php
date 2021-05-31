@@ -25,6 +25,11 @@ if (isset($school)){
         $kinderen[] = $row;
     }
 
+    if (empty($kinderen)){
+        header("Location: addKind.php");
+        exit;
+    }
+
     mysqli_close($db);
 }
 
