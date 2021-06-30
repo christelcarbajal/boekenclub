@@ -12,31 +12,35 @@ if (!isset($_SESSION['login'])) {
 /** @var $db */
 require_once "DB.php";
 
-$id = $_GET['id'];
+if ($_GET['id']){
+    $id = $_GET['id'];
 
-$query = "SELECT * FROM kinderen WHERE id = '$id'";
-$result = mysqli_query($db, $query);
+    $query = "SELECT * FROM kinderen WHERE id = '$id'";
+    $result = mysqli_query($db, $query);
 
-$kind = mysqli_fetch_assoc($result);
+    if ($result){
+        $kind = mysqli_fetch_assoc($result);
 
-$naam = $kind['name'];
+        $name = $kind['name'];
 
-$LV1goed = $kind['LV1 goed'];
-$LV1fout = 5 - $LV1goed;
+        $LV1goed = $kind['LV1 goed'];
+        $LV1fout = 5 - $LV1goed;
 
-$LV2goed = $kind['LV2 goed'];
-$LV2fout = 5 - $LV2goed;
+        $LV2goed = $kind['LV2 goed'];
+        $LV2fout = 5 - $LV2goed;
 
-$LV3goed = $kind['LV3 goed'];
-$LV3fout = 5 - $LV3goed;
+        $LV3goed = $kind['LV3 goed'];
+        $LV3fout = 5 - $LV3goed;
 
-$totaalGoed = $LV1goed + $LV2goed + $LV3goed;
-$totaalFout = $LV1fout + $LV2fout + $LV3fout;
+        $totaalGoed = $LV1goed + $LV2goed + $LV3goed;
+        $totaalFout = $LV1fout + $LV2fout + $LV3fout;
 
-$goed = false;
-
-if ($totaalGoed > $totaalFout) {
-    $goed = true;
+        if ($totaalGoed > $totaalFout) {
+            $goed = true;
+        }else{
+            $goed = false;
+        }
+    }
 }
 
 ?>
@@ -45,7 +49,7 @@ if ($totaalGoed > $totaalFout) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?= $naam ?></title>
+    <title><?= $name ?></title>
     <link rel="stylesheet" type="text/css" href="css/style2.css"/>
 </head>
 <body>
@@ -53,16 +57,16 @@ if ($totaalGoed > $totaalFout) {
 <section>
     <a id="terug" href="login.php">Terug</a>
 
-    <h1><?= $naam ?></h1>
+    <h1><?= $name ?></h1>
 
     <div>
         <?php if ($goed) { ?>
-            <p><?= $naam ?> is goed bezig!</p>
+            <p><?= $name ?> is goed bezig!</p>
         <?php }else{ ?>
-            <p><?= $naam ?> is helaas niet zo goed bezig...</p>
+            <p><?= $name ?> is helaas niet zo goed bezig...</p>
         <?php } ?>
     </div>
-    <div id = chart2>
+    <div id = chart2> <!-- API is used for showing chart -->
         <img src="https://quickchart.io/chart?c={
   type: 'pie',
   data: {
@@ -81,7 +85,7 @@ if ($totaalGoed > $totaalFout) {
 }
 ">
     </div>
-    <div id = "chart1">
+    <div id = "chart1"> <!-- API is used for showing chart -->
         <img src="https://quickchart.io/chart?c={
           type: 'line',
           data: {
@@ -106,11 +110,14 @@ if ($totaalGoed > $totaalFout) {
         }">
     </div>
     <div>
-        <?php if ($goed) { ?>
-            <p>U kan er voor kiezen om <?= $naam ?> naar het volgende level te laten gaan. </p>
+        <?php if ($goed) { // gives advise to teacher ?>
+            <p>U kan er voor kiezen om <?= $name ?> naar het volgende level te laten gaan. </p>
         <?php }else{ ?>
-            <p>U kan er voor kiezen om <?= $naam ?> hetzelfde level te laten spelen of een vorig level opnieuw te doen. </p>
+            <p>U kan er voor kiezen om <?= $name ?> hetzelfde level te laten spelen of een vorig level opnieuw te doen. </p>
         <?php } ?>
+    </div>
+    <div>
+        <a id = terug href = delete.php?id=<?= $id ?>>Verwijder <?= $name ?></a>
     </div>
 </section>
 
