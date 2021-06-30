@@ -85,3 +85,7 @@ a{
     cursor: pointer;
     color: #A6FFFF;
 }
+
+span{
+    color : red;
+}
