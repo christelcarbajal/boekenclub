@@ -12,24 +12,27 @@ if (!isset($_SESSION['login'])) {
 /** @var $db */
 require_once "DB.php";
 
-$query = "SELECT * FROM docenten WHERE mail = '$email'";
+$id = $_GET['id'];
+
+$query = "SELECT * FROM kinderen WHERE id = '$id'";
 $result = mysqli_query($db, $query);
 
 if ($result){
-    $docent = mysqli_fetch_assoc($result);
-    $school_id = $docent['school_id'];
+    $kind = mysqli_fetch_assoc($result);
+    $name = $kind['name'];
 }
 
 if (isset($_POST['submit'])) {
-    $naam = htmlspecialchars(mysqli_escape_string($db, $_POST['name']), ENT_QUOTES);
+    $name = htmlspecialchars(mysqli_escape_string($db, $_POST['name']), ENT_QUOTES);
 
-    if ($naam == "") {
+    if ($name == "") {
         $error = 'Naam mag niet leeg zijn';
     }
 
     if (!isset($error)) {
-        $query = "INSERT INTO kinderen (name, school_id)
-              VALUES ('$naam', '$school_id')";
+        $query = "UPDATE kinderen
+                    SET name = '$name'
+                    WHERE id = '$id'";
         $result = mysqli_query($db, $query) or die('Error: ' . $query);
 
         if ($result) {
@@ -59,10 +62,10 @@ if (isset($_POST['submit'])) {
     <form method="post" action="<?= $_SERVER['REQUEST_URI']; ?>">
         <div>
             <label for="name">Naam:</label><br>
-            <input class = "text" id="name" type="text" name="name" value="<?= isset($naam) ? htmlentities($naam) : '' ?>"/>
+            <input class = "text" id="name" type="text" name="name" value="<?= isset($name) ? htmlentities($name) : '' ?>"/>
         </div>
         <div>
-            <input id = "log" type="submit" name="submit" value="Aanmaken"/>
+            <input id = "log" type="submit" name="submit" value="Veranderen"/>
         </div>
     </form>
 </section>

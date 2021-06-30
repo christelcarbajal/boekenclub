@@ -120,7 +120,8 @@ if ($_GET['id']){
         <?php } ?>
     </div>
     <div>
-        <a id = terug href = delete.php?id=<?= $id ?>>Verwijder <?= $name ?></a>
+        <a id = "terug" href = delete.php?id=<?= $id ?>>Verwijder <?= $name ?></a>
+        <a id = "terug" href = edit.php?id=<?= $id ?>>Verander naam</a>
     </div>
 </section>
 

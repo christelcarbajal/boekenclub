@@ -63,27 +63,27 @@ if (isset($_GET['id'])) {
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <title>Delete - <?= $kind['name'] ?></title>
+    <title>Delete - <?= htmlentities($kind['name']) ?></title>
 </head>
 <body>
 <section>
     <a id="terug" href="overzicht.php?id=<?= $id ?> ">Terug</a>
-    <h2>Verwijder - <?= $kind['name'] ?></h2>
+    <h2>Verwijder - <?= htmlentities($kind['name']) ?></h2>
     <form action="" method="post">
         <p>
-            Weet u zeker dat u "<?= $kind['name'] ?>" wilt verwijderen? Alle gegevens van <?= $kind['name'] ?> zullen verloren gaan.
+            Weet u zeker dat u "htmlentities(<?= $kind['name'] ?>)" wilt verwijderen? Alle gegevens van <?= htmlentities($kind['name']) ?> zullen verloren gaan.
         </p>
-        <input type="hidden" name="id" value="<?= $kind['id'] ?>"/>
-        <input id = "log" type="submit" name="submit" value="Verwijder alleen <?= $kind['name'] ?>"/>
+        <input type="hidden" name="id" value="<?= htmlentities($kind['id']) ?>"/>
+        <input id = "log" type="submit" name="submit" value="Verwijder alleen <?= htmlentities ($kind['name']) ?>"/>
     </form>
 
     <h2 id = "warning" >Of verwijder - alle kinderen</h2>
     <form action="" method="post">
         <p>
-            Weet u zeker dat u "Alle kinderen van <?= $school['name'] ?>" wilt verwijderen? Alle gegevens van de kinderen zullen verloren gaan, maar uw account blijft wel bestaan.
+            Weet u zeker dat u "Alle kinderen van <?= htmlentities($school['name']) ?>" wilt verwijderen? Alle gegevens van de kinderen zullen verloren gaan, maar uw account blijft wel bestaan.
         </p>
-        <input type="hidden" name="id2" value="<?= $school['id'] ?>"/>
-        <input id = "log" type="submit" name="submit2" value="Verwijder alle kinderen van <?= $school['name'] ?>"/>
+        <input type="hidden" name="id2" value="<?= htmlentities($school['id']) ?>"/>
+        <input id = "log" type="submit" name="submit2" value="Verwijder alle kinderen van <?= htmlentities($school['name']) ?>"/>
     </form>
 </section>
 
