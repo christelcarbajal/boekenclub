@@ -6,22 +6,23 @@ body{
 
 section{
     background-color: #5887FF;
-    max-width: 1200px;
     display: flex;
     text-align: center;
     justify-content: center;
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
     border: 2px solid #102E4A;
     border-radius: 10px;
+    margin: auto;
+    max-width: 1000px;
+    flex-wrap: wrap;
+
 }
 
-.kind{
+.block{
+    display: inline-block;
+    text-decoration: none;
+    color: black;
     margin : 50px;
+    min-width: 100px;
     padding : 20px;
     border: 2px solid #102E4A;
     transition: all 0.4s ease-out;
@@ -29,17 +30,14 @@ section{
     background-color: #A6FFFF;
 }
 
-.kind:hover{
+
+.block:hover{
     background-color: #102E4A;
     border-color: #A6FFFF;
     transition: all 0.4s ease-out;
     color: white;
 }
 
-a{
-    text-decoration: none;
-    color: black;
-}
 
 div{
     text-decoration: underline;

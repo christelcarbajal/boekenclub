@@ -14,15 +14,26 @@ require_once "DB.php";
 $query = "SELECT * FROM docenten WHERE mail = '$email'";
 $result = mysqli_query($db, $query);
 
+
 $docent = mysqli_fetch_assoc($result);
-$school = $docent['school'];
+$school_id = $docent['school_id'];
 
-if (isset($school)){
-    $query = "SELECT * FROM kinderen WHERE school = '$school'";
-    $result2 = mysqli_query($db, $query);
+if (isset($school_id)){
+    $query = "SELECT * FROM kinderen WHERE school_id = '$school_id'";
+    $result = mysqli_query($db, $query);
 
-    while ($row = mysqli_fetch_assoc($result2)){
-        $kinderen[] = $row;
+    if($result){
+        while ($row = mysqli_fetch_assoc($result)){
+            $kinderen[] = $row;
+        }
+
+        $query = "SELECT * FROM school WHERE id = '$school_id'";
+        $result = mysqli_query($db, $query) or die('Error: ' . $query);
+
+        if ($result) {
+            $school = mysqli_fetch_assoc($result);
+            $school_name = $school['name'];
+        }
     }
 
     if (empty($kinderen)){
@@ -31,8 +42,8 @@ if (isset($school)){
     }
 
     mysqli_close($db);
-}
 
+}
 
 ?>
 
@@ -40,7 +51,7 @@ if (isset($school)){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Kinderen van <?= $school ?></title>
+    <title>Kinderen van <?= $school_name ?></title>
     <link rel="stylesheet" type="text/css" href="css/style3.css">
 </head>
 <body>
@@ -55,12 +66,12 @@ if (isset($school)){
             Voeg kind toe
         </div>
     </a>
-    <h1>Kinderen van <?= $school ?></h1>
+    <h1>Kinderen van <?= $school_name ?></h1>
 </header>
 
     <section>
         <?php foreach ($kinderen as $kind) { ?>
-            <a href="overzicht.php?id=<?= $kind['id'] ?>"><p class = "kind"><?= $kind['name'] ?></p></a>
+            <a class = "block" href="overzicht.php?id=<?= $kind['id'] ?>"><p><?= $kind['name'] ?></p></a>
         <?php } ?>
     </section>
 </body>

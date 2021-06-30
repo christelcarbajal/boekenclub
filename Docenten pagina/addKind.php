@@ -15,13 +15,15 @@ require_once "DB.php";
 $query = "SELECT * FROM docenten WHERE mail = '$email'";
 $result = mysqli_query($db, $query);
 
-$docent = mysqli_fetch_assoc($result);
-$school = $docent['school'];
+if ($result){
+    $docent = mysqli_fetch_assoc($result);
+    $school_id = $docent['school_id'];
+}
 
 if (isset($_POST['submit'])) {
     $naam = $_POST['name'];
-        $query = "INSERT INTO kinderen (name, school)
-                  VALUES ('$naam', '$school')";
+        $query = "INSERT INTO kinderen (name, school_id)
+                  VALUES ('$naam', '$school_id')";
         $result = mysqli_query($db, $query) or die('Error: ' . $query);
 
         if ($result) {

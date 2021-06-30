@@ -10,16 +10,35 @@ if (isset($_POST['submit'])) {
     $mail = $_POST['email'];
 
     if ($_POST['password'] == $_POST['password2']){
-        $query = "INSERT INTO docenten (name, mail, school, password)
-                  VALUES ('$naam', '$mail', '$school', '$password')";
+        $query = "INSERT INTO school (name)
+                  VALUES ('$school')";
         $result = mysqli_query($db, $query) or die('Error: ' . $query);
 
-        if ($result) {
-            header('Location: index.php');
-            exit;
-        } else {
-            $error['db'] = 'Something went wrong in your database query: ' . mysqli_error($db);
+        if ($result){
+            $query = "SELECT * FROM school WHERE name = '$school'";
+            $result = mysqli_query($db, $query) or die('Error: ' . $query);
+
+            if ($result){
+                $school = mysqli_fetch_assoc($result);
+                $school_id = $school['id'];
+
+                $query = "INSERT INTO docenten (name, mail, school_id, password)
+                  VALUES ('$naam', '$mail', '$school_id', '$password')";
+                $result = mysqli_query($db, $query) or die('Error: ' . $query);
+
+                if ($result) {
+                    header('Location: index.php');
+                    exit;
+                } else {
+                    $error['db'] = 'Something went wrong in your database query: ' . mysqli_error($db);
+                }
+            }
+
         }
+
+
+
+
     }else{
         $errors['herhalen'] = 'Wachtwoord herhalen ging fout';
     }
