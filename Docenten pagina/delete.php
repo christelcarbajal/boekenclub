@@ -50,11 +50,10 @@ if (isset($_GET['id'])) {
                 exit;
             }
         }
-
-
     }
-
-
+}else{
+    header("Location: login.php");
+    exit;
 }
 
 ?>
@@ -68,6 +67,7 @@ if (isset($_GET['id'])) {
 </head>
 <body>
 <section>
+    <a id="terug" href="overzicht.php?id=<?= $id ?> ">Terug</a>
     <h2>Verwijder - <?= $kind['name'] ?></h2>
     <form action="" method="post">
         <p>

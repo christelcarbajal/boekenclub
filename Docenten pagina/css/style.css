@@ -16,6 +16,7 @@ section{
     padding: 20px;
     border: 2px solid #102E4A;
     border-radius: 10px;
+
 }
 
 .text{
@@ -67,4 +68,20 @@ a{
 
 #warning{
     color: red;
+}
+
+#terug{
+    padding : 10px;
+    background-color: #A6FFFF;
+    width: 200px;
+    border: 2px solid #102E4A;
+    border-radius: 5px;
+    color: black;
+}
+
+#terug:hover{
+    background-color: #102E4A;
+    border-color: #A6FFFF;
+    cursor: pointer;
+    color: #A6FFFF;
 }

@@ -41,6 +41,9 @@ if ($_GET['id']){
             $goed = false;
         }
     }
+}else{
+    header("Location: login.php");
+    exit;
 }
 
 ?>
