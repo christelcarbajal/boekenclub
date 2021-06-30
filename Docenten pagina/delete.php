@@ -71,7 +71,7 @@ if (isset($_GET['id'])) {
     <h2>Verwijder - <?= htmlentities($kind['name']) ?></h2>
     <form action="" method="post">
         <p>
-            Weet u zeker dat u "htmlentities(<?= $kind['name'] ?>)" wilt verwijderen? Alle gegevens van <?= htmlentities($kind['name']) ?> zullen verloren gaan.
+            Weet u zeker dat u <?= htmlentities($kind['name']) ?> wilt verwijderen? Alle gegevens van <?= htmlentities($kind['name']) ?> zullen verloren gaan.
         </p>
         <input type="hidden" name="id" value="<?= htmlentities($kind['id']) ?>"/>
         <input id = "log" type="submit" name="submit" value="Verwijder alleen <?= htmlentities ($kind['name']) ?>"/>
