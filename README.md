@@ -5,7 +5,6 @@
 
 ## Table of Contents
 * [General Info](#general-information)
-* [Screenshots](#screenshots)
 * [Project Status](#project-status)
 * [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
@@ -13,9 +12,6 @@
 
 ## General Information
 - The main objective was to create a game for children to teach them to read / improve their reading skills.
-
-## Screenshots
-
 
 
 ## Project Status
